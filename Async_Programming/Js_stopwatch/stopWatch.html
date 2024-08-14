@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stopwatch</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        #timer {
+            font-size: 2em;
+            margin: 20px 0;
+        }
+        #buttons {
+            margin: 20px 0;
+        }
+        button {
+            font-size: 1em;
+            padding: 10px 20px;
+            margin: 0 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="timer">00</div>
+    <div id="buttons">
+        <button id="startBtn">Start</button>
+        <button id="pauseBtn">Pause</button>
+        <button id="resetBtn">Reset</button>
+    </div>
+
+   
+</body>
+</html>
+ <script>
+        let timerInterval;
+        let startTime;
+        let pausedTime = 0;
+        let isRunning = false;
+
+        document.getElementById("startBtn").addEventListener("click", start);
+        document.getElementById("pauseBtn").addEventListener("click", pause);
+        document.getElementById("resetBtn").addEventListener("click", reset);
+
+        function start() {
+            if (!isRunning) {
+                startTime = Date.now() - pausedTime;
+                timerInterval = setInterval(updateTimer, 1000);
+                isRunning = true;
+            }
+        }
+
+        function pause() {
+            if (isRunning) {
+                clearInterval(timerInterval);
+                pausedTime = Date.now() - startTime;
+                isRunning = false;
+            }
+        }
+
+        function reset() {
+            clearInterval(timerInterval);
+            document.getElementById("timer").textContent = "00:00:00";
+            pausedTime = 0;
+            isRunning = false;
+        }
+
+        function updateTimer() {
+            let currentTime = Math.floor((Date.now() - startTime) / 1000);
+            let hours = Math.floor(currentTime / 3600);
+            let minutes = Math.floor((currentTime % 3600) / 60);
+            let seconds = currentTime % 60;
+
+            let timerDisplay = "";
+
+            if (hours > 0) {
+                timerDisplay += hours.toString().padStart(2, '0') + ":";
+            }
+            if (minutes > 0 || hours > 0) {
+                timerDisplay += minutes.toString().padStart(2, '0') + ":";
+            }
+            timerDisplay += seconds.toString().padStart(2, '0');
+
+            document.getElementById("timer").textContent = timerDisplay;
+        }
+    </script>

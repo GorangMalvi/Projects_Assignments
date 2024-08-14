@@ -1,0 +1,21 @@
+.form{
+    border: 1px solid black;
+    display: flex;
+    gap: 15px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color:blanchedalmond;
+    width: 600px;
+    
+}
+.form > button{
+      border-radius: 10px;
+     
+
+}
+.todoList{
+    width: 600px;
+    border: 1px black;
+    background-color:antiquewhite ;
+}
+

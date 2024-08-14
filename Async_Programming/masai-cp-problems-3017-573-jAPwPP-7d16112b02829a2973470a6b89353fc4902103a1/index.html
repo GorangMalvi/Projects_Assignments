@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Virtual McDonalds</title>
+    <style>
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #f9ca24;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #f0932b;
+        }
+
+        #ordered-items {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .food-image {
+            max-width: 150px;
+            margin: 10px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .food-image:hover {
+            transform: scale(1.1);
+        }
+
+        #order-id {
+            margin-top: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #2d3436;
+        }
+    </style>
+</head>
+<body>
+<section class="container">
+    <button id="orderButton">Order Food</button>
+
+    <div id="ordered-items">
+        <input type="checkbox" class="food" id="burger" value="burger" /> Burger
+        <input type="checkbox" class="food" id="mcPuff" value="mcPuff" /> McPuff
+        <input type="checkbox" class="food" id="wrap" value="wrap" /> Wrap
+        <input type="checkbox" class="food" id="cold_drink" value="cold_drink" /> Cold Drink
+        <input type="checkbox" class="food" id="coffee" value="coffee" /> Coffee
+    </div>
+
+    <div id="order-id"></div>
+</section>
+
+<script src="./src/McDonalds.js"></script>
+</body>
+</html>
